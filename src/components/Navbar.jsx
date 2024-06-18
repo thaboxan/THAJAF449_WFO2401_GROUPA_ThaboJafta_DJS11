@@ -1,15 +1,15 @@
+import { Link } from "react-router-dom";
+
 import "./Navbar.css";
 
-const Navbar = () => {
+export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <a href="/" className="logo">
+        <Link to="/" className="logo">
           #PodX
-        </a>
+        </Link>
       </div>
     </nav>
   );
-};
-
-export default Navbar;
+}

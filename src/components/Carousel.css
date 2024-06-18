@@ -1,0 +1,14 @@
+.custom-carousel {
+    width: 80%; /* Adjust the width as needed */
+    max-width: 800px; /* Optional: set a max-width */
+    margin: 0 auto; /* Center the carousel */
+    margin-top: 30px;
+    
+    
+}
+
+.custom-carousel .carousel .slide img {
+    height: 500px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensure the image covers the container */
+    border-radius: 5px;
+}
