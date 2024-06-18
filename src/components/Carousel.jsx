@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./Carousel.css";
@@ -10,6 +10,7 @@ const getRandomSubset = (arr, count) => {
 
 const DemoCarousel = () => {
   const [podcasts, setPodcasts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://podcast-api.netlify.app/")
@@ -17,8 +18,12 @@ const DemoCarousel = () => {
       .then((data) => {
         const randomPodcasts = getRandomSubset(data, 5);
         setPodcasts(randomPodcasts);
+        setIsLoading(false); // Set isLoading to false after data is fetched
       })
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setIsLoading(false); // Set isLoading to false even if there's an error
+      });
   }, []);
 
   const onChange = (index) => {
@@ -35,19 +40,33 @@ const DemoCarousel = () => {
 
   return (
     <div className="custom-carousel">
-      <Carousel
-        showArrows={true}
-        onChange={onChange}
-        onClickItem={onClickItem}
-        onClickThumb={onClickThumb}
-      >
-        {podcasts.map((podcast, index) => (
-          <div key={podcast.id}>
-            <img src={podcast.image} alt={`Slide ${index + 1}`} />
-            <p className="legend">{podcast.title}</p>
-          </div>
-        ))}
-      </Carousel>
+      {isLoading ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            color: "white",
+          }}
+        >
+          <span style={{ fontSize: "30px" }}>Loading...</span>
+        </div>
+      ) : (
+        <Carousel
+          showArrows={true}
+          onChange={onChange}
+          onClickItem={onClickItem}
+          onClickThumb={onClickThumb}
+        >
+          {podcasts.map((podcast, index) => (
+            <div key={podcast.id}>
+              <img src={podcast.image} alt={`Slide ${index + 1}`} />
+              <p className="legend">{podcast.title}</p>
+            </div>
+          ))}
+        </Carousel>
+      )}
     </div>
   );
 };
