@@ -12,3 +12,10 @@
     object-fit: cover; /* Ensure the image covers the container */
     border-radius: 5px;
 }
+
+.legend {
+    background-color: #5A72A0;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+  }

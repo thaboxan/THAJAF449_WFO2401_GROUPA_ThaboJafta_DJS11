@@ -30,10 +30,10 @@ const Card = ({
           ))}
         </div>
         <p className="card-seasons">
-          <strong>Seasons:</strong> {seasons}
+          <bold>Seasons:</bold> {seasons}
         </p>
         <p className="card-updated">
-          <strong>Updated:</strong> {new Date(updated).toLocaleDateString()}
+          <bold>Updated:</bold> {new Date(updated).toLocaleDateString()}
         </p>
       </div>
       <a
@@ -42,7 +42,7 @@ const Card = ({
         target="_blank"
         rel="noopener noreferrer"
       >
-        Read more
+        Read more...
       </a>
     </div>
   );
