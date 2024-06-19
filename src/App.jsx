@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import DemoCarousel from "./components/Carousel";
@@ -10,7 +10,9 @@ export default function App() {
       <div>
         <Navbar />
         <DemoCarousel />
-        <Homepage />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+        </Routes>
       </div>
     </BrowserRouter>
   );
