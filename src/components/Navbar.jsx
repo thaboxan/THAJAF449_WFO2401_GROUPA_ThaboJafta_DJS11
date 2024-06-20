@@ -7,7 +7,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-left">
         <Link to="/" className="logo">
-          #PodX
+          PodX
         </Link>
       </div>
     </nav>
