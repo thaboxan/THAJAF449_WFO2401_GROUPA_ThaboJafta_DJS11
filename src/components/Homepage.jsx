@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Card from "./Card";
 import { fetchPreview } from "../utils/fetchApi";
-import "./Homepage.css";
 
 export default function Homepage() {
   const { id } = useParams();
@@ -12,6 +11,7 @@ export default function Homepage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [sortOrder, setSortOrder] = useState("unordered"); // State for sorting order
+  const [titleFilter, setTitleFilter] = useState(""); // State for title filter
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,6 +33,13 @@ export default function Homepage() {
     return items.filter((item) => item.genres.includes(genreId));
   };
 
+  const filterByTitle = (items, title) => {
+    if (!title) return items;
+    return items.filter((item) =>
+      item.title.toLowerCase().includes(title.toLowerCase())
+    );
+  };
+
   const sortData = (items, order) => {
     switch (order) {
       case "title-asc":
@@ -49,7 +56,8 @@ export default function Homepage() {
   };
 
   const filteredData = filterByGenre(data, selectedGenre);
-  const sortedData = sortData(filteredData, sortOrder);
+  const titleFilteredData = filterByTitle(filteredData, titleFilter);
+  const sortedData = sortData(titleFilteredData, sortOrder);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -68,6 +76,16 @@ export default function Homepage() {
           <option value="recently-updated">Newly Updated</option>
           <option value="oldest-updated">Oldest Updated</option>
         </select>
+      </div>
+
+      <div className="text-input">
+        <input
+          type="text"
+          className="input-box"
+          placeholder="Filter by title"
+          value={titleFilter}
+          onChange={(e) => setTitleFilter(e.target.value)}
+        />
       </div>
 
       <section className="cards-list">
