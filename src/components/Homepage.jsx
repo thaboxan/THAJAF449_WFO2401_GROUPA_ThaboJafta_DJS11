@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Fuse from "fuse.js";
 import Card from "./Card";
+import "./Homepage.css";
 import { fetchPreview } from "../utils/fetchApi";
 
 export default function Homepage() {

@@ -1,28 +1,27 @@
 
 .dropdown,
 .text-input {
-  
   margin-bottom: 20px;
   margin-left: 2.4vw;
 }
 
 .select-box,
 .input-box {
-    display: flex;
+  margin-left: 2.4vw;
+  cursor:pointer;
   width: 150px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
   font-size: 16px;
-  color: #333;
+  color: #5A72A0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-right: 10px; 
 }
 
 .select-box:focus,
 .input-box:focus {
-  border-color: #007bff;
   outline: none;
 }
 
@@ -34,6 +33,7 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+  cursor: pointer;
   color: #5A72A0;
 }
 
