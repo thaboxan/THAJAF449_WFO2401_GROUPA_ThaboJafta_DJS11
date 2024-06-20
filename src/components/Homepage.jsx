@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Fuse from "fuse.js";
 import Card from "./Card";
 import { fetchPreview } from "../utils/fetchApi";
 
@@ -11,7 +12,7 @@ export default function Homepage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [sortOrder, setSortOrder] = useState("unordered"); // State for sorting order
-  const [titleFilter, setTitleFilter] = useState(""); // State for title filter
+  const [searchQuery, setSearchQuery] = useState(""); // State for search query
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,11 +34,15 @@ export default function Homepage() {
     return items.filter((item) => item.genres.includes(genreId));
   };
 
-  const filterByTitle = (items, title) => {
-    if (!title) return items;
-    return items.filter((item) =>
-      item.title.toLowerCase().includes(title.toLowerCase())
-    );
+  const fuzzySearch = (items, query) => {
+    if (!query) return items;
+
+    const fuse = new Fuse(items, {
+      keys: ["title", "description", "genres"],
+      threshold: 0.3, // threshold to control fuzziness
+    });
+
+    return fuse.search(query).map((result) => result.item);
   };
 
   const sortData = (items, order) => {
@@ -56,8 +61,8 @@ export default function Homepage() {
   };
 
   const filteredData = filterByGenre(data, selectedGenre);
-  const titleFilteredData = filterByTitle(filteredData, titleFilter);
-  const sortedData = sortData(titleFilteredData, sortOrder);
+  const fuzzySearchedData = fuzzySearch(filteredData, searchQuery);
+  const sortedData = sortData(fuzzySearchedData, sortOrder);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -82,9 +87,9 @@ export default function Homepage() {
         <input
           type="text"
           className="input-box"
-          placeholder="Filter by title"
-          value={titleFilter}
-          onChange={(e) => setTitleFilter(e.target.value)}
+          placeholder="Search shows"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
