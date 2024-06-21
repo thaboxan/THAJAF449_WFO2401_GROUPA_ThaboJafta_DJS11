@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import axios from "axios";
 import "./Card.css";
 
 const Card = ({
   title,
   description,
+  id,
   genres: genreIds,
   image,
-  url,
   seasons,
   updated,
 }) => {
+  console.log({ id }); // Log the id to verify it's being passed correctly
   const [genreTitles, setGenreTitles] = useState([]);
   const [error, setError] = useState(null);
 
@@ -19,10 +20,17 @@ const Card = ({
     const fetchGenreTitles = async () => {
       try {
         const promises = genreIds.map((id) =>
-          axios.get(`https://podcast-api.netlify.app/genre/${id}`)
+          fetch(`https://podcast-api.netlify.app/genre/${id}`).then(
+            (response) => {
+              if (!response.ok) {
+                throw new Error(`Failed to fetch genre ${id}`);
+              }
+              return response.json();
+            }
+          )
         );
         const responses = await Promise.all(promises);
-        setGenreTitles(responses.map((response) => response.data.title));
+        setGenreTitles(responses.map((response) => response.title));
       } catch (error) {
         console.error("Error fetching genres:", error);
         setError("Failed to load genres");
@@ -53,14 +61,9 @@ const Card = ({
           <strong>Updated:</strong> {new Date(updated).toLocaleDateString()}
         </p>
       </div>
-      <a
-        href={url}
-        className="card-link"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Read more
-      </a>
+      <Link to={`/podcast/${id}`} className="card-link">
+        Read More...
+      </Link>
     </div>
   );
 };
@@ -73,6 +76,7 @@ Card.propTypes = {
   url: PropTypes.string.isRequired,
   seasons: PropTypes.number.isRequired,
   updated: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default Card;

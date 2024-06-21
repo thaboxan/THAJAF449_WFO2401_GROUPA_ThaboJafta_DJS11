@@ -1,0 +1,101 @@
+/* ShowDetails.css */
+.show-details-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .show-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    background-color:  #f5f5f5;
+  }
+  
+  .show-image {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+  }
+  
+  .show-description {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    background-color:  #f5f5f5;
+    color: #666;
+  }
+  
+  .seasons-heading {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+    background-color:  #f5f5f5;
+  }
+  
+  .season-select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color:  #f5f5f5;
+  }
+  
+  .season-info {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #333;
+    background-color:  #f5f5f5;
+  }
+  
+  .episodes-container {
+    margin-top: 20px;
+    background-color:  #f5f5f5;
+  }
+  
+  .episodes-container h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+    background-color:  #f5f5f5;
+  }
+  
+  .episode {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color:  #f5f5f5;
+  }
+  
+  .episode h5 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #333;
+    background-color:  #f5f5f5;
+  }
+  
+  .episode audio {
+    width: 100%;
+    margin-top: 10px;
+    background-color:  #f5f5f5;
+  }
+  
+  .loading, .error {
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    background-color:  #f5f5f5;
+  }
+  
+  .total-episodes {
+    background-color: #f5f5f5; ;
+  }

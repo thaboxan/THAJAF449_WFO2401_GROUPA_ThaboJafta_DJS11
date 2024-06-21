@@ -12,8 +12,8 @@ export default function Homepage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [sortOrder, setSortOrder] = useState("unordered"); // State for sorting order
-  const [searchQuery, setSearchQuery] = useState(""); // State for search query
+  const [sortOrder, setSortOrder] = useState("title-asc"); // Changed default to "title-asc"
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,30 +40,36 @@ export default function Homepage() {
 
     const fuse = new Fuse(items, {
       keys: ["title", "description", "genres"],
-      threshold: 0.3, // threshold to control fuzziness
+      threshold: 0.3,
     });
 
     return fuse.search(query).map((result) => result.item);
   };
 
   const sortData = (items, order) => {
-    switch (order) {
-      case "title-asc":
-        return items.sort((a, b) => a.title.localeCompare(b.title));
-      case "title-desc":
-        return items.sort((a, b) => b.title.localeCompare(a.title));
-      case "recently-updated":
-        return items.sort((a, b) => new Date(b.updated) - new Date(a.updated));
-      case "oldest-updated":
-        return items.sort((a, b) => new Date(a.updated) - new Date(b.updated));
-      default:
-        return items;
-    }
+    return [...items].sort((a, b) => {
+      switch (order) {
+        case "title-asc":
+          return a.title.localeCompare(b.title);
+        case "title-desc":
+          return b.title.localeCompare(a.title);
+        case "recently-updated":
+          return new Date(b.updated) - new Date(a.updated);
+        case "oldest-updated":
+          return new Date(a.updated) - new Date(b.updated);
+        default:
+          return 0;
+      }
+    });
   };
 
-  const filteredData = filterByGenre(data, selectedGenre);
-  const fuzzySearchedData = fuzzySearch(filteredData, searchQuery);
-  const sortedData = sortData(fuzzySearchedData, sortOrder);
+  const processData = (data) => {
+    let processed = filterByGenre(data, selectedGenre);
+    processed = fuzzySearch(processed, searchQuery);
+    return sortData(processed, sortOrder);
+  };
+
+  const processedData = processData(data);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -76,7 +82,6 @@ export default function Homepage() {
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value)}
         >
-          <option value="unordered">Unordered</option>
           <option value="title-asc">Title A-Z</option>
           <option value="title-desc">Title Z-A</option>
           <option value="recently-updated">Newly Updated</option>
@@ -88,23 +93,23 @@ export default function Homepage() {
         <input
           type="text"
           className="input-box"
-          placeholder="Search shows"
+          placeholder="Search Shows"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
       <section className="cards-list">
-        {sortedData.map((item) => (
+        {processedData.map((podcast) => (
           <Card
-            key={item.id}
-            title={item.title}
-            description={item.description}
-            genres={item.genres}
-            image={item.image}
-            url={item.url}
-            seasons={item.seasons}
-            updated={item.updated}
+            key={podcast.id}
+            id={podcast.id}
+            title={podcast.title}
+            description={podcast.description}
+            genres={podcast.genres}
+            image={podcast.image}
+            seasons={podcast.seasons}
+            updated={podcast.updated}
           />
         ))}
       </section>
