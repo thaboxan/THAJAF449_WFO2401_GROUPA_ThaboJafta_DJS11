@@ -34,12 +34,13 @@ Before you begin, ensure you have met the following requirements:
 2. **Install Dependencies**
 
 	npm install
-	# or
+        or
 	yarn install
 
 3. **Start the development server**
+   
    	npm run dev
-	# or
+   	or
 	yarn dev
 
 Contact Information
