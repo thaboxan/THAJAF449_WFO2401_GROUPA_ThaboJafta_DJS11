@@ -1,3 +1,59 @@
+# PodX
+
+PodX is a modern web application built with Vite and React. It leverages the powerful build capabilities of Vite to provide a fast and efficient development experience. This README file provides a comprehensive introduction to the project, setup instructions, usage examples, and contact information.
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Setup Instructions](#setup-instructions)
+3. [Usage Examples](#usage-examples)
+4. [Contact Information](#contact-information)
+
+## Introduction
+
+PodX is designed to be a performant and scalable web application. By utilizing Vite, a fast build tool optimized for modern web projects, and React, a popular JavaScript library for building user interfaces, PodX aims to deliver an optimal development and user experience. This project structure ensures that you can quickly get started and efficiently manage your development workflow.
+
+## Setup Instructions
+
+### Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Node.js (version 12.0.0 or later)
+- npm (version 6.0.0 or later) or Yarn (version 1.22.0 or later)
+
+### Installation
+
+1. **Clone the Repository**
+
+  	 ```bash
+  	 git clone https://github.com/thaboxan/THAJAF449_WFO2401_GROUPA_ThaboJafta_DJS11.git
+   	 cd THAJAF449_WFO2401_GROUPA_ThaboJafta_DJS11
+ 	  ```
+
+2. **Install Dependencies**
+
+	npm install
+	# or
+	yarn install
+
+3. **Start the development server**
+   	npm run dev
+	# or
+	yarn dev
+
+Contact Information
+For any questions or feedback, please contact:
+Thabo Jafta
+Email: [thvbojafta@gmail.com]
+GitHub: [https://github.com/thaboxan]
+
+
+
+
+
+
+
 # 🎵 PODCAST APP | PORTFOLIO PIECE 💿
 [DJS11] Starter Instructions for the Final Portfolio Piece Submission 🚀
 
