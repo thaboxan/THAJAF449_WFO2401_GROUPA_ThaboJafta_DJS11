@@ -1,5 +1,5 @@
 # PodX
-
+url: https://podcastappx.netlify.app/
 PodX is a modern web application built with Vite and React. It leverages the powerful build capabilities of Vite to provide a fast and efficient development experience. This README file provides a comprehensive introduction to the project, setup instructions, usage examples, and contact information.
 
 ## Table of Contents
