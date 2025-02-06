@@ -49,6 +49,7 @@ For any questions or feedback, please contact:
 Thabo Jafta
 Email: [thvbojafta@gmail.com]
 GitHub: [https://github.com/thaboxan]
+linkedin: [https://www.linkedin.com/in/thabojafta1/x]
 
 
 
