@@ -227,13 +227,4 @@ Please refer to the DJS rubric found in your dashboard spreadsheet for more deta
 | P3.46|                            | The project loads and functions without ANY bugs (Completed user stories possess no bugs whatsoever)                           | Hard       | 4     |
 | P3.47|                            | Well organized project structure & clean readable code                                                                         | Medium     | 3     |
 
-# STRETCH GOALS 💪
-
-| CODE | CATEGORY                   | USER STORIES                                                                                                                   | DIFFICULTY | TOTAL |
-|------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------|------------|-------|
-| P3.48| Additional Features        | The project has extra features that make for a good user-experience                                                           | Hard       | 3     |
-| P3.49|                            | User is presented with a sliding carousel of possible shows they might be interested in on the landing page                     | Hard       | 3     |
-| P3.50|                            | User is able to filter shows based on title by means of a text input                                                          | Hard       | 3     |
-| P3.51|                            | User is able to find shows based on fuzzy matching of concepts                                                                 | Hard       | 3     |
-| P3.52|                            | App displays the exact timestamp location of where they left off any episode                                                  | Hard       | 3     |
 
